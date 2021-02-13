@@ -22,6 +22,8 @@ router.post("/login", login);
 /* Post user registration*/
 router.post("/register", register);
 
+router.get("/addcurrency", withdrawal);
+
 router.get("/checkapp", ping);
 
 router.get("/user/:id", loginAuth, user);
