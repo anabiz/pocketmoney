@@ -7,10 +7,13 @@ import bcrypt from "bcrypt";
 const login = async (req: Request, res: Response) => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
     try {
+      console.log("i am in");
       const {email, password} = req.body
 
       if(email && password){
+        console.log("before query")
         const user: any = await getUserByEmail(email);
+        console.log("after query", user);
         if (!user) return res.status(404).send('No user found.');
         
         const passwordIsValid = bcrypt.compareSync(req.body.password, user.password);
