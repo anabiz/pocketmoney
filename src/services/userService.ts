@@ -8,14 +8,13 @@ import { getCurrencyByName } from "../services/currencyService";
 import { getExchangeRate } from "../util/index"
 
 export async function getUserByEmail(email: string) {
-  try {
-    return db
-      .query(sql`SELECT * FROM users WHERE email = ${email}`)
-      .then(([data]) => data);
-  } catch (error) {
-    console.error(error);
-    return error;
-  }
+  return db
+    .query(sql`SELECT * FROM users WHERE email = ${email}`)
+    .then(([data]) => data)
+    .catch(error => {
+      console.error(error);
+      return error;
+    })
 }
 
 //add user
@@ -54,14 +53,14 @@ export async function getAllUsers() {
   }
 }
 
-export async function fundNoobAccount(creditDetail: fundAccountTypeEntity ){
+export async function fundNoobAccount(creditDetail: fundAccountTypeEntity) {
   const currency_id = (await getCurrencyByName(creditDetail.main_currency)).id;
   let amount = creditDetail.amount;
-  if(creditDetail.input_currency !== creditDetail.main_currency){
-  amount = await getExchangeRate(creditDetail.input_currency,creditDetail.main_currency,creditDetail.amount); 
+  if (creditDetail.input_currency !== creditDetail.main_currency) {
+    amount = await getExchangeRate(creditDetail.input_currency, creditDetail.main_currency, creditDetail.amount);
   }
   const input = {
-    user_id:creditDetail.user_id,
+    user_id: creditDetail.user_id,
     amount,
     currency_id,
     transaction_type: "credit"
@@ -69,7 +68,7 @@ export async function fundNoobAccount(creditDetail: fundAccountTypeEntity ){
   return await transaction.createTransaction(input);
 }
 
-export async function updateUserType( userId: string, userType: string) {
+export async function updateUserType(userId: string, userType: string) {
   try {
     return db
       .query(sql`UPDATE users SET user_type = ${userType} WHERE id = ${userId}`)
@@ -81,7 +80,7 @@ export async function updateUserType( userId: string, userType: string) {
 }
 
 
-export async function updateUserMainCurrency( userId: string, Currency_id: string) {
+export async function updateUserMainCurrency(userId: string, Currency_id: string) {
   try {
     return db
       .query(sql`UPDATE users SET currency_id = ${Currency_id} WHERE id = ${userId}`)

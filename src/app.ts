@@ -5,6 +5,7 @@ import cookieParser from "cookie-parser";
 import flash from "express-flash";
 import cors from "cors";
 import v1Route from "./routes"; 
+import morgan from 'morgan'
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 require("dotenv").config();
@@ -12,7 +13,7 @@ require("dotenv").config();
 const app = express();
 
 app.use(cors());
-
+app.use(morgan('dev'))
 app.disable("x-powered-by");
 app.use(logger("dev"));
 app.use(express.json());
