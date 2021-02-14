@@ -8,6 +8,7 @@ export async function getUserWalletDetails(userId: string) {
     return db
       .query(sql`SELECT * FROM wallets WHERE user_id = ${userId}`)
       .then(([data]) => data);
+
   } catch (error) {
     console.error(error);
     return error;

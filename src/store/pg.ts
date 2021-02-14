@@ -6,6 +6,9 @@ import createConnectionPool, { sql } from '@databases/pg';
 const db = createConnectionPool(
   process.env.DATABASE_URL
 );
+
+
+ //db.dispose();
 ///console.log(DATABASE_URL)
 //console.log(process.env.DATABASE_URL)
 export { db, sql };

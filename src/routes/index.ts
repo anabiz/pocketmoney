@@ -40,7 +40,7 @@ router.post("/admin/promotion/:id", adminAuthorization, promotion);
 
 router.post("/admin/adminfund/:userId", adminAuthorization, adminFund);
 
-router.post("/admin/fundapproval/:id",adminAuthorization, fundapproval);
+router.get("/admin/fundapproval/:id",adminAuthorization, fundapproval);
 
 router.post("/admin/changemaincurrency/:id", loginAuth, changeMainCurrency);
 
