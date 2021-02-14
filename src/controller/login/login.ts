@@ -11,7 +11,8 @@ const login = async (req: Request, res: Response) => {
       const {email, password} = req.body
 
       if(email && password){
-        console.log("before query")
+        console.log("before query");
+        console.log("my payload ", {email:email, password:password});
         const user: any = await getUserByEmail(email);
         console.log("after query", user);
         if (!user) return res.status(404).send('No user found.');
