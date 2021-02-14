@@ -9,7 +9,9 @@ import { getExchangeRate } from "../util/index"
 
 export async function getUserByEmail(email: string) {
   return db
-    .query(sql`SELECT * FROM users WHERE email = ${email}`)
+    .query(
+      sql`SELECT * FROM users WHERE email = ${email} RETURNING *`
+      )
     .then(([data]) => data)
     .catch(error => {
       console.error(error);

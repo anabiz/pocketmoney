@@ -3,12 +3,11 @@ import createConnectionPool, { sql } from '@databases/pg';
 
 // N.B. you will need to replace this connection
 // string with the correct string for your database.
-const db = createConnectionPool({database:process.env.DATABASE_URL,ssl:false}
-  // process.env.DATABASE_URL
+const db = createConnectionPool(
+  process.env.DATABASE_URL
 );
 
-
  //db.dispose();
-///console.log(DATABASE_URL)
+ console.log(process.env.DATABASE_URL)
 //console.log(process.env.DATABASE_URL)
 export { db, sql };
