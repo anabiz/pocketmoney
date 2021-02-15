@@ -1,8 +1,8 @@
 import bcrypt from "bcrypt";
 //import { userType } from "../schema/types";
 import jwt from "jsonwebtoken";
-import dotenv from 'dotenv'
-dotenv.config()
+// import dotenv from 'dotenv'
+// dotenv.config()
 import Request from "request-promise-native";
 
 export const encrypt = async (password: string): Promise<string> => {

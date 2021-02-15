@@ -6,11 +6,15 @@ import flash from "express-flash";
 import cors from "cors";
 import v1Route from "./routes"; 
 import morgan from 'morgan'
+import path from "path";
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 require("dotenv").config();
 
 const app = express();
+
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'jade');
 
 app.use(cors());
 app.use(morgan('dev'))
