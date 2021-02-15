@@ -4,9 +4,10 @@ import createConnectionPool, { sql } from '@databases/pg';
 // N.B. you will need to replace this connection
 // string with the correct string for your database.
 const db = createConnectionPool(
-  process.env.HEROKU_POSTGRESQL_COBALT_URL
+  process.env.DATABASE_URL
 );
 
  //db.dispose();
-console.log(process.env.HEROKU_POSTGRESQL_COBALT_URL)
+
+//console.log(process.env.DATABASE_URL)
 export { db, sql };
