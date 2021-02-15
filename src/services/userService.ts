@@ -14,7 +14,7 @@ export async function getUserByEmail(email: string) {
       )
     .then(([data]) => data)
     .catch(error => {
-      console.error(error);
+      console.log(error);
       return error;
     })
 }
